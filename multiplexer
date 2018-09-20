@@ -1,0 +1,224 @@
+#! /usr/local/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1-107-gab6ae79)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x17869e0 .scope module, "behavioralMultiplexer" "behavioralMultiplexer" 2 7;
+ .timescale -9 -12;
+    .port_info 0 /OUTPUT 1 "out"
+    .port_info 1 /INPUT 1 "address0"
+    .port_info 2 /INPUT 1 "address1"
+    .port_info 3 /INPUT 1 "in0"
+    .port_info 4 /INPUT 1 "in1"
+    .port_info 5 /INPUT 1 "in2"
+    .port_info 6 /INPUT 1 "in3"
+v0x179cb00_0 .net "address", 1 0, L_0x17c37c0;  1 drivers
+o0x7fa6da4a9048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c1510_0 .net "address0", 0 0, o0x7fa6da4a9048;  0 drivers
+o0x7fa6da4a9078 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c15d0_0 .net "address1", 0 0, o0x7fa6da4a9078;  0 drivers
+o0x7fa6da4a90a8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c16a0_0 .net "in0", 0 0, o0x7fa6da4a90a8;  0 drivers
+o0x7fa6da4a90d8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c1760_0 .net "in1", 0 0, o0x7fa6da4a90d8;  0 drivers
+o0x7fa6da4a9108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c1870_0 .net "in2", 0 0, o0x7fa6da4a9108;  0 drivers
+o0x7fa6da4a9138 .functor BUFZ 1, C4<z>; HiZ drive
+v0x17c1930_0 .net "in3", 0 0, o0x7fa6da4a9138;  0 drivers
+v0x17c19f0_0 .net "inputs", 3 0, L_0x17c3600;  1 drivers
+v0x17c1ad0_0 .net "out", 0 0, L_0x17c38f0;  1 drivers
+L_0x17c3600 .concat [ 1 1 1 1], o0x7fa6da4a90a8, o0x7fa6da4a90d8, o0x7fa6da4a9108, o0x7fa6da4a9138;
+L_0x17c37c0 .concat [ 1 1 0 0], o0x7fa6da4a9048, o0x7fa6da4a9078;
+L_0x17c38f0 .part/v L_0x17c3600, L_0x17c37c0, 1;
+S_0x179c980 .scope module, "testMultiplexer" "testMultiplexer" 3 5;
+ .timescale -9 -12;
+v0x17c3060_0 .var "addr0", 0 0;
+v0x17c3120_0 .var "addr1", 0 0;
+v0x17c31f0_0 .var "in0", 0 0;
+v0x17c32f0_0 .var "in1", 0 0;
+v0x17c33c0_0 .var "in2", 0 0;
+v0x17c3460_0 .var "in3", 0 0;
+v0x17c3530_0 .net "out", 0 0, L_0x17c4db0;  1 drivers
+S_0x17c1d40 .scope module, "multiplexer" "structuralMultiplexer" 3 11, 2 20 0, S_0x179c980;
+ .timescale -9 -12;
+    .port_info 0 /OUTPUT 1 "out"
+    .port_info 1 /INPUT 1 "address0"
+    .port_info 2 /INPUT 1 "address1"
+    .port_info 3 /INPUT 1 "in0"
+    .port_info 4 /INPUT 1 "in1"
+    .port_info 5 /INPUT 1 "in2"
+    .port_info 6 /INPUT 1 "in3"
+L_0x17c3a60/d .functor NOT 1, v0x17c3060_0, C4<0>, C4<0>, C4<0>;
+L_0x17c3a60 .delay 1 (50000,50000,50000) L_0x17c3a60/d;
+L_0x17c3b70/d .functor NOT 1, v0x17c3120_0, C4<0>, C4<0>, C4<0>;
+L_0x17c3b70 .delay 1 (50000,50000,50000) L_0x17c3b70/d;
+L_0x17c3cd0/d .functor AND 1, v0x17c3060_0, v0x17c3120_0, C4<1>, C4<1>;
+L_0x17c3cd0 .delay 1 (50000,50000,50000) L_0x17c3cd0/d;
+L_0x17c3e30/d .functor AND 1, L_0x17c3a60, v0x17c3120_0, C4<1>, C4<1>;
+L_0x17c3e30 .delay 1 (50000,50000,50000) L_0x17c3e30/d;
+L_0x17c3f80/d .functor AND 1, v0x17c3060_0, L_0x17c3b70, C4<1>, C4<1>;
+L_0x17c3f80 .delay 1 (50000,50000,50000) L_0x17c3f80/d;
+L_0x17c4170/d .functor AND 1, L_0x17c3a60, L_0x17c3b70, C4<1>, C4<1>;
+L_0x17c4170 .delay 1 (50000,50000,50000) L_0x17c4170/d;
+L_0x17c42d0/d .functor AND 1, L_0x17c3cd0, v0x17c3460_0, C4<1>, C4<1>;
+L_0x17c42d0 .delay 1 (50000,50000,50000) L_0x17c42d0/d;
+L_0x17c4430/d .functor AND 1, L_0x17c3e30, v0x17c33c0_0, C4<1>, C4<1>;
+L_0x17c4430 .delay 1 (50000,50000,50000) L_0x17c4430/d;
+L_0x17c4630/d .functor AND 1, L_0x17c3f80, v0x17c32f0_0, C4<1>, C4<1>;
+L_0x17c4630 .delay 1 (50000,50000,50000) L_0x17c4630/d;
+L_0x17c47e0/d .functor AND 1, L_0x17c4170, v0x17c31f0_0, C4<1>, C4<1>;
+L_0x17c47e0 .delay 1 (50000,50000,50000) L_0x17c47e0/d;
+L_0x17c49f0/d .functor OR 1, L_0x17c42d0, L_0x17c4430, C4<0>, C4<0>;
+L_0x17c49f0 .delay 1 (50000,50000,50000) L_0x17c49f0/d;
+L_0x17c4b90/d .functor OR 1, L_0x17c4630, L_0x17c47e0, C4<0>, C4<0>;
+L_0x17c4b90 .delay 1 (50000,50000,50000) L_0x17c4b90/d;
+L_0x17c4db0/d .functor OR 1, L_0x17c49f0, L_0x17c4b90, C4<0>, C4<0>;
+L_0x17c4db0 .delay 1 (50000,50000,50000) L_0x17c4db0/d;
+v0x17c1f90_0 .net "add0add1", 0 0, L_0x17c3cd0;  1 drivers
+v0x17c2070_0 .net "add0add13", 0 0, L_0x17c42d0;  1 drivers
+v0x17c2130_0 .net "add0nadd1", 0 0, L_0x17c3f80;  1 drivers
+v0x17c21d0_0 .net "add0nadd11", 0 0, L_0x17c4630;  1 drivers
+v0x17c2290_0 .net "address0", 0 0, v0x17c3060_0;  1 drivers
+v0x17c23a0_0 .net "address1", 0 0, v0x17c3120_0;  1 drivers
+v0x17c2460_0 .net "in0", 0 0, v0x17c31f0_0;  1 drivers
+v0x17c2520_0 .net "in1", 0 0, v0x17c32f0_0;  1 drivers
+v0x17c25e0_0 .net "in1orin0", 0 0, L_0x17c4b90;  1 drivers
+v0x17c2730_0 .net "in2", 0 0, v0x17c33c0_0;  1 drivers
+v0x17c27f0_0 .net "in3", 0 0, v0x17c3460_0;  1 drivers
+v0x17c28b0_0 .net "in3orin2", 0 0, L_0x17c49f0;  1 drivers
+v0x17c2970_0 .net "nadd0", 0 0, L_0x17c3a60;  1 drivers
+v0x17c2a30_0 .net "nadd0add1", 0 0, L_0x17c3e30;  1 drivers
+v0x17c2af0_0 .net "nadd0add12", 0 0, L_0x17c4430;  1 drivers
+v0x17c2bb0_0 .net "nadd0nadd1", 0 0, L_0x17c4170;  1 drivers
+v0x17c2c70_0 .net "nadd0nadd10", 0 0, L_0x17c47e0;  1 drivers
+v0x17c2e20_0 .net "nadd1", 0 0, L_0x17c3b70;  1 drivers
+v0x17c2ec0_0 .net "out", 0 0, L_0x17c4db0;  alias, 1 drivers
+    .scope S_0x179c980;
+T_0 ;
+    %vpi_call 3 15 "$dumpfile", "multiplexer_waveform.vcd" {0 0 0};
+    %vpi_call 3 16 "$dumpvars" {0 0 0};
+    %vpi_call 3 19 "$display", "addr1 addr0| in0 in1 in2 in3 | output | Exp Out" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 0 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 23 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 1 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 0 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 1 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 29 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 0 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 31 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 1 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 33 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 0 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3060_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3120_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c31f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c32f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x17c33c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x17c3460_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 35 "$display", "  %b     %b  |  %b   %b   %b   %b  |   %b    | 1 ", v0x17c3120_0, v0x17c3060_0, v0x17c31f0_0, v0x17c32f0_0, v0x17c33c0_0, v0x17c3460_0, v0x17c3530_0 {0 0 0};
+    %vpi_call 3 36 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./multiplexer.v";
+    "multiplexer.t.v";

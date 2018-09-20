@@ -1,0 +1,53 @@
+comparch@comparchVM:~/comparch/HW2$ iverilog -o decoder decoder.t.v
+./decoder.v:7: warning: timescale for behavioralDecoder inherited from another file.
+decoder.t.v:2: ...: The inherited timescale is here.
+./decoder.v:18: warning: timescale for structuralDecoder inherited from another file.
+decoder.t.v:2: ...: The inherited timescale is here.
+comparch@comparchVM:~/comparch/HW2$ ./decoder
+En A0 A1| O0 O1 O2 O3 | Expected Output
+0  0  0 |  0  0  0  0 | All false
+0  1  0 |  0  0  0  0 | All false
+0  0  1 |  0  0  0  0 | All false
+0  1  1 |  0  0  0  0 | All false
+1  0  0 |  1  0  0  0 | O0 Only
+1  1  0 |  0  1  0  0 | O1 Only
+1  0  1 |  0  0  1  0 | O2 Only
+1  1  1 |  0  0  0  1 | O3 Only
+
+comparch@comparchVM:~/comparch/HW2$ iverilog -o multiplexer multiplexer.t.v
+./multiplexer.v:7: warning: timescale for behavioralMultiplexer inherited from another file.
+multiplexer.t.v:2: ...: The inherited timescale is here.
+./multiplexer.v:20: warning: timescale for structuralMultiplexer inherited from another file.
+multiplexer.t.v:2: ...: The inherited timescale is here.
+comparch@comparchVM:~/comparch/HW2$ ./multiplexer
+addr1 addr0| in0 in1 in2 in3 | output | Exp Out
+  0     0  |  0   0   0   0  |   0    | 0 
+  0     0  |  1   0   0   0  |   1    | 1 
+  0     1  |  0   0   0   0  |   0    | 0 
+  0     1  |  0   1   0   0  |   1    | 1 
+  1     0  |  0   0   0   0  |   0    | 0 
+  1     0  |  0   0   1   0  |   1    | 1 
+  1     1  |  0   0   0   0  |   0    | 0 
+  1     1  |  0   0   0   1  |   1    | 1 
+
+
+
+comparch@comparchVM:~/comparch/HW2$ iverilog -o adder adder.t.v
+./adder.v:8: warning: timescale for behavioralFullAdder inherited from another file.
+adder.t.v:2: ...: The inherited timescale is here.
+./adder.v:20: warning: timescale for structuralFullAdder inherited from another file.
+adder.t.v:2: ...: The inherited timescale is here.
+comparch@comparchVM:~/comparch/HW2$ ./adder
+a b carryin | sum carryout | Exp Sum Exp Cout
+0 0   0     |  0     0     |    0       0
+0 1   0     |  1     0     |    1       0
+1 0   0     |  1     0     |    1       0
+1 1   0     |  0     1     |    0       1
+0 0   1     |  1     0     |    1       0
+0 1   1     |  0     1     |    0       1
+1 0   1     |  0     1     |    0       1
+1 1   1     |  1     1     |    1       1
+
+
+
+

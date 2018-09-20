@@ -7,10 +7,15 @@ module testDecoder ();
     reg enable;
     wire out0,out1,out2,out3;
 
-    behavioralDecoder decoder (out0,out1,out2,out3,addr0,addr1,enable);
-    //structuralDecoder decoder (out0,out1,out2,out3,addr0,addr1,enable); // Swap after testing
+    // behavioralDecoder decoder (out0,out1,out2,out3,addr0,addr1,enable);
+    structuralDecoder decoder (out0,out1,out2,out3,addr0,addr1,enable); // Swap after testing
 
     initial begin
+    // Dump trace to a file. Open with gtkwave.
+    $dumpfile("decoder_waveform.vcd");
+    $dumpvars();
+    // Calling $dumpvars without arguments dumps all signals. This might be
+    // too much as our circuits get bigger.
     $display("En A0 A1| O0 O1 O2 O3 | Expected Output");
     enable=0;addr0=0;addr1=0; #1000 
     $display("%b  %b  %b |  %b  %b  %b  %b | All false", enable, addr0, addr1, out0, out1, out2, out3);
@@ -28,6 +33,7 @@ module testDecoder ();
     $display("%b  %b  %b |  %b  %b  %b  %b | O2 Only", enable, addr0, addr1, out0, out1, out2, out3);
     enable=1;addr0=1;addr1=1; #1000 
     $display("%b  %b  %b |  %b  %b  %b  %b | O3 Only", enable, addr0, addr1, out0, out1, out2, out3);
+    $finish();  // End simulation
     end
 
 endmodule
